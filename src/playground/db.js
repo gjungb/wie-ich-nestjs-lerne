@@ -2,8 +2,10 @@
 const { Pool } = require('pg');
 // pools will use environment variables
 // for connection information
-const pool = new Pool();
+const pool = new Pool({
+  user: 'gitpod'
+});
 pool.query('SELECT NOW()', (err, res) => {
-  console.log(err, res);
+  console.log(err, res.rows);
   pool.end();
 });
